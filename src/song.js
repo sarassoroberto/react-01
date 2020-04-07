@@ -8,7 +8,7 @@ const song = (props) => {
     return (
             <div className="song">
                 <h6>{props.title}</h6>
-                <p>autore: {props.author}</p>
+                <p>time: {props.time}</p>
             </div>
             )
 }
