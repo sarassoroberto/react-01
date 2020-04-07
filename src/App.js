@@ -1,26 +1,20 @@
+// react.js --> node_module/react/react.js
+// apri il file react.js cerca export default  lo mette dentro la variabile React
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Song from './song';
+import playlist from './playlist.json';
 
+import './App.css';
+// Componente App  (functional component)
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  console.log(playlist)
+  const songlist = playlist.map()
+
+  return (<div className="app"> 
+            
+             
+          </div>);
 }
 
 export default App;
