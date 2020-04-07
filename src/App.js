@@ -14,6 +14,7 @@ function App() {
       <ListGroupItem 
         heading={song.title}
         right={song.time}
+        content={song.note}
       />
     )
   })

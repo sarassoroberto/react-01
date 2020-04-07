@@ -2,22 +2,27 @@
     {
         "id":1,
         "title": "Bone Machine",
-        "time": "3:02"
+        "time": "3:02",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
     },
     {
         "id":2,
         "title": "Break My Body",
-        "time": "2:05"
+        "time": "2:05",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
     },
     {
         "id":3,
         "title": "Something Against You",
-        "time": "1:47"
+        "time": "1:47",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
     },
     {
         "id":4,
         "title": "Broken Face",
-        "time": "1:30"
+        "time": "1:30",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
+        
     },
     {
         "id":5,
@@ -47,7 +52,8 @@
     {
         "id":10,
         "title": "Oh My Golly!",
-        "time": "2:32"
+        "time": "2:32",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
     },
     {
         "id":11,
@@ -62,6 +68,7 @@
     {
         "id":13,
         "title": "Brick Is Red",
-        "time": "2:00"
+        "time": "2:00",
+        "note":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi interdum sem posuere, bibendum risus sed, consectetur nunc. Cras vulputate nulla et orci auctor, vel pellentesque massa tristique. "
     }
 ]
