@@ -2,7 +2,8 @@
     {
         "id":1,
         "title": "Bone Machine",
-        "time": "3:02"
+        "time": "3:02",
+        "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique."
     },
     {
         "id":2,
@@ -12,7 +13,8 @@
     {
         "id":3,
         "title": "Something Against You",
-        "time": "1:47"
+        "time": "1:47",
+        "note": "A Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique."
     },
     {
         "id":4,
@@ -27,7 +29,8 @@
     {
         "id":6,
         "title": "River Euphrates",
-        "time": "2:33"
+        "time": "2:33",
+        "note": "B Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique."
     },
     {
         "id":7,

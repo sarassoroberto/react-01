@@ -1,8 +1,8 @@
-const tabellina = [1,2,5,4,5,6];
-// [2,4,6,8,10,12]
+// [1,2,3,4,5,6]  ----> [2,4,6,8,10]
 
-const tabellina_del_2 = tabellina.map(current => current * 2)
+const base = [1,2,3,4,5,6]
 
-console.log(tabellina_del_2)
+const tab2 = base.map((numeroBase)=>{
+        return numeroBase * 2
+}) 
 
- 
