@@ -9,10 +9,12 @@ import './App.css';
 function App() {
 
   console.log(playlist)
-  const songlist = playlist.map()
+  const songlist = playlist.map((song)=>{
+    return (<p>per ogni canzone</p>)
+  })
 
   return (<div className="app"> 
-            
+            {songlist}
              
           </div>);
 }
