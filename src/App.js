@@ -3,14 +3,19 @@
 import React from 'react';
 import Song from './song';
 import playlist from './playlist.json';
+import ListGroupItem from './ListGroupItem/ListGroupItem';
 
 // import './App.css';
 // Componente App  (functional component)
 function App() {
 
   const songlist = playlist.map((song) => {
-    console.log("song in map",song);
-    return  (<Song titolocanzone={song.title}></Song>)
+    return  (
+             <ListGroupItem 
+                header={song.title}
+                content={song.note}
+                right={song.time}
+             />)
   })
   
   return (<div className="app container"> 
