@@ -12,6 +12,8 @@ function App() {
   const songlist = playlist.map((song) => {
     return  (
              <ListGroupItem 
+                key={song.id}
+                
                 header={song.title}
                 content={song.note}
                 right={song.time}
