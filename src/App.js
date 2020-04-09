@@ -1,7 +1,6 @@
 // react.js --> node_module/react/react.js
 // apri il file react.js cerca export default  lo mette dentro la variabile React
 import React from 'react';
-import Song from './song';
 import playlist from './playlist.json';
 import ListGroupItem from './ListGroupItem/ListGroupItem';
 
