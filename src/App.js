@@ -24,6 +24,9 @@ function App() {
          console.log("song",newsong)
          
          
+         setPlayer({
+            currentMedia:newsong
+         })
   }
 
   /** RENDER */       
