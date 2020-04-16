@@ -1,36 +1,55 @@
-import React, { useState } from 'react' //preso da node module
-
+import React, { useState } from 'react'
+// export default React
+// export useState = (a,b) => {}  :::: export function useState() {}
+// useState --> HOOK --> Solo in functional Component
 const ListGroupItem = (props) => {
 
-    console.log(props.content === undefined)
 
-    const [state,setState] = useState({
-        "openNote":false
-    })
+    // le informazioni sullo stato in lettura si possona fare accedeno direttamente allo stato
+    const inizio = {
+        "isContentOpen" : false
+        }
 
-    const toggleNote = () => {
-        const newState = ! state.openNote;
-        setState({"openNote":newState})
+    const [statoDelPannello,impostaStatoDelPannello] = useState(inizio)
+
+    const toggleContent = (e) => {
+        // true --> ! true --> false
+        // false --> ! false --> true
+
+        // NOOOOOOOO !!!!!!
+        // statoDelPannello.isContentOpen = ! statoDelPannello.isContentOpen
+        const nuovoStato = {
+           "isContentOpen" : ! statoDelPannello.isContentOpen 
+        }
+
+        impostaStatoDelPannello(nuovoStato)
+
+        
     }
 
-    return(
-        <div  className="list-group-item list-group-item-action" >
+
+    return (
+        <div className="list-group-item list-group-item-action">
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">
-                    {
-                        props.content ? <i
-                                        onClick = {toggleNote} 
-                                        class="fa fa-plus-circle pr-1"
-                                        ></i> 
-                                    : null
-                    }
-                    {props.heading}
+                    {props.content ? 
+                                    <i  className="fa fa-plus-circle pr-1"
+                                        onClick = {toggleContent}></i> 
+                                   : null  }
+                    {props.header}
                 </h5>
                 <small>{props.right}</small>
             </div>
-            {
-                state.openNote ? <p className="mb-1"><small>{props.content}</small></p> : null        
+            { 
+                statoDelPannello.isContentOpen ?
+                <p className="mb-1">
+                    {props.content}  
+                  
+                </p>
+                : 
+                null
             }
+           
         </div>
     )
 }
