@@ -34,16 +34,16 @@ const ListGroupItem = (props) => {
 
     return (
         <div className={"list-group-item list-group-item-action"}
-        onClick={clickHandler}
         >
             <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">
-                    {props.content ? 
-                                    <i  className="fa fa-plus-circle pr-1"
-                                        onClick = {toggleContent}></i> 
-                                   : null  }
-                    {props.header}
-                </h5>
+                <div className=" align-item-center">
+                    {props.content ? <i  className="fa fa-plus-circle pr-1 d-inline" onClick = {toggleContent}></i>:null}
+                    <h5 className="mb-1 d-inline-block " onClick={clickHandler}>
+                        {props.header}
+                    </h5>   
+                </div>
+                                  
+                
                 <small>{props.right}</small>
             </div>
             { 
