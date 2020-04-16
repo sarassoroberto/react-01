@@ -9,23 +9,20 @@ import './App.css';
 // Componente App  (functional component)
 function App() {
 
-  const [currentSong,setCurrentSong] = useState(false);
-  const playSong = (e) => {
-   console.log(e);
-  }
-
-  const songlist = playlist.map((song)=>{
-    return (
-    
-      <ListGroupItem 
-        key={song.id}
-        heading={song.title}
-        right={song.time}
-        content={song.note}
-        
-      />
-    )
+  const songlist = playlist.map((song) => {
+    return  (
+             
+             <ListGroupItem 
+                key={song.id}
+                header={song.title}
+                content={song.note}
+                right={song.time}
+             />)
   })
+  
+  return (<div className="app container"> 
+             {songlist}
+          </div>);
 
   return (<>
           {
