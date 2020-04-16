@@ -9,20 +9,38 @@ import MediaPlayer from './MediaPlayer/MediaPlayer';
 function App() {
 
   
-   const [player,setPlayer] =  useState({
+  const [player,setPlayer] =  useState({
             currentMedia:playlist[0]
          })
 
+  /** EVENT HANDLER */
+
+  const songSelected = (id) => {
+         console.log("songSelected",id)
+         const newsong = playlist.find((item)=>{
+                           return item.id === id
+                           })
+
+         console.log("song",newsong)
+         
+         
+  }
+
+  /** RENDER */       
   const songlist = playlist.map((song) => {
                   return  (
                            <ListGroupItem 
                               key={song.id}
+                              id={song.id}
                               header={song.title}
                               content={song.note}
                               right={song.time}
+                              listItemSelected={songSelected}
                            />)
   })
   
+
+
   return (<div className="app container"> 
             <MediaPlayer 
                media = {player.currentMedia}

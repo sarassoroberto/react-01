@@ -11,6 +11,7 @@ const ListGroupItem = (props) => {
         }
 
     const [statoDelPannello,impostaStatoDelPannello] = useState(inizio)
+    const [active,setActive] = useState(false)
 
     const toggleContent = (e) => {
         // true --> ! true --> false
@@ -23,13 +24,18 @@ const ListGroupItem = (props) => {
         }
 
         impostaStatoDelPannello(nuovoStato)
+    }
 
-        
+    const clickHandler = () => {
+        console.log("selectItem",props.id)
+        props.listItemSelected(props.id)
     }
 
 
     return (
-        <div className="list-group-item list-group-item-action">
+        <div className={"list-group-item list-group-item-action"}
+        onClick={clickHandler}
+        >
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">
                     {props.content ? 

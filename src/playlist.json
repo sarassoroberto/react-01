@@ -3,7 +3,8 @@
         "id":1,
         "title": "Bone Machine",
         "time": "3:02",
-        "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique."
+        "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique.",
+        "poster":"https://upload.wikimedia.org/wikipedia/en/3/34/SurferRosa.jpg?1587013234292"
     },
     {
         "id":2,
