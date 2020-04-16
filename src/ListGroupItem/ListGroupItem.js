@@ -5,12 +5,16 @@ import React, { useState } from 'react'
 const ListGroupItem = (props) => {
 
 
+    
+
     // le informazioni sullo stato in lettura si possona fare accedeno direttamente allo stato
     const inizio = {
         "isContentOpen" : false
         }
 
     const [statoDelPannello,impostaStatoDelPannello] = useState(inizio)
+    
+    const [active,setActive] = useState(false)
 
     const toggleContent = (e) => {
         // true --> ! true --> false
@@ -27,16 +31,30 @@ const ListGroupItem = (props) => {
         
     }
 
+    const selectItem = () => {
+        console.log("DENTRO LIST GROUP -- selectItem",props.id)
+        // lo stato active deve cambiare diventare true
+        props.change(props.id)
+    }
+
+    // true / false   
+    const activeClass = active  ? 'active' : null
 
     return (
-        <div className="list-group-item list-group-item-action">
+        <div className={"list-group-item list-group-item-action "+activeClass} >
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">
                     {props.content ? 
                                     <i  className="fa fa-plus-circle pr-1"
                                         onClick = {toggleContent}></i> 
                                    : null  }
-                    {props.header}
+                    
+                    <div 
+                    className="header" 
+                    onClick={selectItem}
+                    >
+                        {props.header}
+                    </div>
                 </h5>
                 <small>{props.right}</small>
             </div>
