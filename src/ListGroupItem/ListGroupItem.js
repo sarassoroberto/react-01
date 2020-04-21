@@ -30,8 +30,6 @@ const ListGroupItem = (props) => {
 
     }
 
-
-
     const selectItem = () => {
         console.log("DENTRO LIST GROUP -- selectItem",props.id)
         const newActive = setActive(!active)
