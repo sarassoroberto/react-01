@@ -25,6 +25,8 @@ function App() {
       console.log("DENTRO APP ::songChange",newCurrent);
    }
 
+   // search(titolo) playlist --> filter (cercare(titolo))
+
 
   const songlist = playlist.map((song) => {
     return  (
@@ -45,8 +47,10 @@ function App() {
               <MediaPlayer
                song = {mediaState.current}
               >
-              </MediaPlayer>  
-            
+              </MediaPlayer> 
+               
+            <SearchBar  />  
+
             <ListGroup header="nome playlist"> 
              {songlist}  
             </ListGroup>
