@@ -14,7 +14,7 @@ const ListGroupItem = (props) => {
 
     const [statoDelPannello,impostaStatoDelPannello] = useState(inizio)
     
-    const [active,setActive] = useState(false)
+    const [active,setActive] = useState(props.active)
 
     const toggleContent = (e) => {
         // true --> ! true --> false
@@ -30,14 +30,18 @@ const ListGroupItem = (props) => {
 
     }
 
+
+
     const selectItem = () => {
         console.log("DENTRO LIST GROUP -- selectItem",props.id)
+        const newActive = setActive(!active)
+        setActive(newActive)
         // lo stato active deve cambiare diventare true
         props.change(props.id)
     }
 
     // true / false   
-    const activeClass = props.active  ? 'active' : null
+    const activeClass = active  ? 'active' : null
 
     return (
         <div className={"list-group-item list-group-item-action "+activeClass} >
