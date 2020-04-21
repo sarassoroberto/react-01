@@ -2,9 +2,9 @@
 // apri il file react.js cerca export default  lo mette dentro la variabile React
 import React, { useState } from 'react';
 import playlist from './playlist.json';
+import ListGroup from './ListGroup/ListGroup'
 import ListGroupItem from './ListGroupItem/ListGroupItem';
 import MediaPlayer from './MediaPlayer/MediaPlayer';
-
 // import './App.css';
 // Componente App  (functional component)
 function App() {
@@ -34,20 +34,23 @@ function App() {
                 content={song.note}
                 right={song.time}
                 id={song.id}
-
+                active={song.id===mediaState.current.id}
                 change = {songChange}
              />)
   })
-  
-   //console.log(mediaState.current.title)
+
+  //console.log(mediaState.current.title)
 
   return (<div className="app container"> 
               <MediaPlayer
                song = {mediaState.current}
               >
               </MediaPlayer>  
-
-             {songlist}
+            
+            <ListGroup header="nome playlist"> 
+             {songlist}  
+            </ListGroup>
+               
           </div>);
 
 }

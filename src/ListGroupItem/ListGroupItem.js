@@ -28,7 +28,6 @@ const ListGroupItem = (props) => {
 
         impostaStatoDelPannello(nuovoStato)
 
-        
     }
 
     const selectItem = () => {
@@ -38,7 +37,7 @@ const ListGroupItem = (props) => {
     }
 
     // true / false   
-    const activeClass = active  ? 'active' : null
+    const activeClass = props.active  ? 'active' : null
 
     return (
         <div className={"list-group-item list-group-item-action "+activeClass} >
