@@ -45,6 +45,8 @@ function App() {
 
 
   return (<div className="app container"> 
+            <h1>Faccio una modifica</h1>
+            
             <MediaPlayer 
                media = {player.currentMedia}
             />
