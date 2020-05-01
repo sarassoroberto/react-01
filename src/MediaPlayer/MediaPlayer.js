@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
-// Class component
-
 class MediaPlayer extends Component {
 
+    constructor(){
+        this.player = new Audio()
+        this.player.src = "https://www.w3schools.com/jsref/horse.ogg";
+    }
 
     render() {
-        console.log("MediaPlayer :: ",this.props.song);
+        //console.log("MediaPlayer :: ",this.props.song);
         const song = this.props.song;
 
         return (
@@ -14,6 +16,7 @@ class MediaPlayer extends Component {
                     <div class="card-body text-center">
                         <h5 class="card-title">{song.title}</h5>
                         <p class="card-text">{song.time}</p>
+
                     </div>
                 </div>
         )
