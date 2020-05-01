@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
 class MediaPlayer extends Component {
-
-    constructor(){
+    
+    constructor(props){
+        super(props)
         this.player = new Audio()
         this.player.src = "https://www.w3schools.com/jsref/horse.ogg";
     }
@@ -16,7 +17,9 @@ class MediaPlayer extends Component {
                     <div class="card-body text-center">
                         <h5 class="card-title">{song.title}</h5>
                         <p class="card-text">{song.time}</p>
-
+                        <div>
+                           <button onClick={()=>{this.player.play()}} >play</button> 
+                        </div>
                     </div>
                 </div>
         )
