@@ -4,20 +4,22 @@ import React, { Component } from 'react'
 
 class MediaPlayer extends Component {
 
-    constructor(props){
-        super(props)
-    }
 
     render() {
         console.log("MediaPlayer :: ",this.props.song);
         const song = this.props.song;
-        return (<p>
-                {song.title}
-                <br/>
-                {song.time}
-            </p>
-            )
+
+        return (
+                <div class="card p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{song.title}</h5>
+                        <p class="card-text">{song.time}</p>
+                    </div>
+                </div>
+        )
     }
 }
+
+
 
 export default MediaPlayer

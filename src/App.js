@@ -5,6 +5,7 @@ import playlist from './playlist.json';
 import ListGroup from './ListGroup/ListGroup'
 import ListGroupItem from './ListGroupItem/ListGroupItem';
 import MediaPlayer from './MediaPlayer/MediaPlayer';
+import SearchBar from './SearchBar/SearchBar';
 // import './App.css';
 // Componente App  (functional component)
 function App() {
@@ -25,8 +26,18 @@ function App() {
       console.log("DENTRO APP ::songChange",newCurrent);
    }
 
-   // search(titolo) playlist --> filter (cercare(titolo))
+   const searchSong = (titolo) => {
+      console.log("APP",titolo,playlist);
 
+      const risultato = playlist.filter((song)=>{
+            // come cerco una parola dentro una stringa in js
+            return song.title.search(titolo)
+            
+      })
+      
+      console.log(risultato)
+
+   }
 
   const songlist = playlist.map((song) => {
     return  (
@@ -44,17 +55,11 @@ function App() {
   //console.log(mediaState.current.title)
 
   return (<div className="app container"> 
-              <MediaPlayer
-               song = {mediaState.current}
-              >
-              </MediaPlayer> 
-               
-            <SearchBar  />  
-
-            <ListGroup header="nome playlist"> 
-             {songlist}  
-            </ListGroup>
-               
+               <MediaPlayer song = {mediaState.current}/>
+               <SearchBar onSearch={searchSong} />
+               <ListGroup header="nome playlist"> 
+                  {songlist}  
+               </ListGroup>    
           </div>);
 
 }

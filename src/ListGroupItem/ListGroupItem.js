@@ -4,10 +4,6 @@ import React, { useState } from 'react'
 // useState --> HOOK --> Solo in functional Component
 const ListGroupItem = (props) => {
 
-
-    
-
-    // le informazioni sullo stato in lettura si possona fare accedeno direttamente allo stato
     const inizio = {
         "isContentOpen" : false
         }
@@ -17,17 +13,11 @@ const ListGroupItem = (props) => {
     const [active,setActive] = useState(props.active)
 
     const toggleContent = (e) => {
-        // true --> ! true --> false
-        // false --> ! false --> true
 
-        // NOOOOOOOO !!!!!!
-        // statoDelPannello.isContentOpen = ! statoDelPannello.isContentOpen
         const nuovoStato = {
            "isContentOpen" : ! statoDelPannello.isContentOpen 
         }
-
         impostaStatoDelPannello(nuovoStato)
-
     }
 
     const selectItem = () => {
@@ -40,33 +30,26 @@ const ListGroupItem = (props) => {
 
     // true / false   
     const activeClass = active  ? 'active' : null
+    const width = {padding:"0 1. 5rem"}
+    const itemHeight = {height:"1.5rem","align-items":"center"}
 
     return (
-        <div className={"list-group-item list-group-item-action "+activeClass} >
-            <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">
-                    {props.content ? 
-                                    <i  className="fa fa-plus-circle pr-1"
-                                        onClick = {toggleContent}></i> 
-                                   : null  }
-                    
-                    <div 
-                    className="header" 
-                    onClick={selectItem}
-                    >
+        <div  className={"list-group-item list-group-item-action "+activeClass} >
+            <div style={itemHeight} className="d-flex w-100 justify-content-between align-content-center px-1">
+                { 
+                props.content ? <div style={width} className="fa fa-plus-circle text-align-center pr-2" onClick = {toggleContent}></div> 
+                              : <div style={width}></div>  
+                }
+
+                <div className="header flex-grow-1" onClick={selectItem}>
                         {props.header}
-                    </div>
-                </h5>
+                </div>  
+            
                 <small>{props.right}</small>
             </div>
             { 
-                statoDelPannello.isContentOpen ?
-                <p className="mb-1">
-                    {props.content}  
-                  
-                </p>
-                : 
-                null
+            statoDelPannello.isContentOpen ? <p className="mb-1 mt-1 pl-4">{props.content}</p>
+                                           : null
             }
            
         </div>
