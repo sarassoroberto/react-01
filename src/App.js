@@ -12,7 +12,7 @@ function App() {
 
    const [mediaState,setMediaState] =  useState({
          current:playlist[0],
-         autoplay:false
+         stop:true
       })
 
    const [searchResult,setSearchResult] =  useState(playlist)
@@ -21,13 +21,13 @@ function App() {
       const newCurrent = playlist.find((song) => {
          return song.id === id_song 
       })
-
+     
       setMediaState({
          current:newCurrent,
-         autoplay: true
+         stop: true
       })
 
-      console.log("DENTRO APP ::songChange",newCurrent);
+      
    }
 
    const searchSong = (parola_da_cercare) => {
@@ -51,7 +51,7 @@ function App() {
       //console.log("app::onNextPress",playlist[index+1])
       setMediaState({
          current:playlist[index+1],
-         autoplay: true
+         stop: true
       })
    }
 
@@ -60,7 +60,7 @@ function App() {
       //console.log("app::onNextPress",playlist[index+1])
       setMediaState({
          current:playlist[index-1],
-         autoplay: true
+         stop: false
       })
    }
 
@@ -81,14 +81,14 @@ function App() {
                            />)
   })
 
-  //console.log(mediaState.current.title)
+  console.log(mediaState.current.title,mediaState.stop)
 
   return (<div className="app container"> 
 
                <MediaPlayer song = {mediaState.current}
+                            stop={mediaState.stop}
                             onNextPress = {onNextPress}
                             onPreviusPress = {onPreviusPress}
-                            autoplay={mediaState.autoplay}
                />
 
                <SearchBar onSearch={searchSong} />
