@@ -2,8 +2,9 @@
     {
         "id":1,
         "title": "Bone Machine",
-        "time": "3:02",
-        "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique."
+        "time": "0:08",
+        "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique.",
+        "src" : "http://www.noiseaddicts.com/samples_1w72b820/2514.mp3"
     },
     {
         "id":2,

@@ -10,7 +10,7 @@ const ListGroupItem = (props) => {
 
     const [statoDelPannello,impostaStatoDelPannello] = useState(inizio)
     
-    const [active,setActive] = useState(props.active)
+    //const [active,setActive] = useState(props.active)
 
     const toggleContent = (e) => {
 
@@ -20,16 +20,9 @@ const ListGroupItem = (props) => {
         impostaStatoDelPannello(nuovoStato)
     }
 
-    const selectItem = () => {
-        console.log("DENTRO LIST GROUP -- selectItem",props.id)
-        const newActive = setActive(!active)
-        setActive(newActive)
-        // lo stato active deve cambiare diventare true
-        props.change(props.id)
-    }
 
     // true / false   
-    const activeClass = active  ? 'active' : null
+    const activeClass = props.active  ? 'active' : null
     const width = {padding:"0 1. 5rem"}
     const itemHeight = {height:"1.5rem","align-items":"center"}
 
@@ -41,7 +34,7 @@ const ListGroupItem = (props) => {
                               : <div style={width}></div>  
                 }
 
-                <div className="header flex-grow-1" onClick={selectItem}>
+                <div className="header flex-grow-1" onClick={()=> props.change(props.id)}>
                         {props.header}
                 </div>  
             
