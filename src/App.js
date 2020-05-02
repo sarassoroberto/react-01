@@ -60,11 +60,18 @@ function App() {
       //console.log("app::onNextPress",playlist[index+1])
       setMediaState({
          current:playlist[index-1],
-         stop: false
+         stop: true
       })
    }
 
-
+   const stopHandler = (stop) => {
+      console.log("stop --> onStopCurrent")
+      setMediaState({
+         current:mediaState.current,
+         stop: stop
+      })
+      
+   }
    
    const songlist = searchResult.map((song) => {
                   // console.log("ACTIVE --> ",song.id===mediaState.current.id,song.id,mediaState.current.id)
@@ -86,9 +93,10 @@ function App() {
   return (<div className="app container"> 
 
                <MediaPlayer song = {mediaState.current}
-                            stop={mediaState.stop}
+                            stop= {mediaState.stop}
                             onNextPress = {onNextPress}
                             onPreviusPress = {onPreviusPress}
+                            stopHandler = {stopHandler}
                />
 
                <SearchBar onSearch={searchSong} />

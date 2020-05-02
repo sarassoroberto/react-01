@@ -4,8 +4,10 @@ class MediaPlayer extends Component {
     
     constructor(props){
         super(props)
+        
         this.state = {
-            playing : false
+            playing : false,
+            message: "la canzone è all'inizio 01"
         }
     }
 
@@ -13,43 +15,52 @@ class MediaPlayer extends Component {
     playHandler = () => {
         console.log("play")
         this.setState({
-            playing:true,
-            stop:false,
-            message:"ascolto la canzone"
+            playing:true
+            
         })
-        
+        this.props.stopHandler(false)
+       
     } 
     
     pauseHandler = () => {
         console.log("pause")
         this.setState({
-            playing:false,
-            stop:false,
-            message:"la canzone e in pausa"
+            playing:false
+            
         })
+       
+        this.props.stopHandler(false)
     } 
 
     stopHandler = () => {
         console.log("stop")
         this.setState({
-            playing:false,
-            stop:true,
-            message:"la canzone è all'inizio"
+            playing:false 
         })
+
+        this.props.stopHandler(true)
     } 
 
 
 
     render() {
-        //console.log("MediaPlayer :: ",this.props.song);
+
+        console.log("MediaPlayer :: ",this.props.stop);
+        let message = '';
+        if(this.props.stop){
+            message =  'il pezzo è all\'inizio'
+        }else{
+            message = this.state.playing ? 'sto ascoltando il pezzo' : 'il pezzo è in pausa'
+        }
+
         const song = this.props.song;
         
         return (
                 <div class="card p-3">
-                    {this.state.stop ? 'stop true':'stop false'}
+                    {this.props.stop ? 'stop true':'stop false'}
                     <div class="card-body text-center">
                         <h5 class="card-title">{song.title}</h5>
-                            <div className="p-2">{this.state.message}</div>
+                            <div className="p-2">{message}</div>
                         <div>
                            <button className="btn" onClick={() => {this.props.onPreviusPress()}} >previus</button> 
                            <button className="btn" onClick={this.stopHandler} >stop</button> 
