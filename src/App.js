@@ -92,7 +92,7 @@ function App() {
    })
 
    return (<div className="app container">
- 
+      <h1>ciccio</h1> 
       <MediaPlayer song={mediaState.current}
          onNextPress={nextPressHandler}
          onPreviusPress={previusPressHandeler}
