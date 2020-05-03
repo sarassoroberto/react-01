@@ -10,110 +10,92 @@ import SearchBar from './SearchBar/SearchBar';
 // Componente App  (functional component)
 function App() {
 
-   const [mediaState,setMediaState] =  useState({
-         current:playlist[0],
-         stop:true
+   const [mediaState, setMediaState] = useState({
+      current: playlist[0],
+      stop: true
+   })
+
+   const [searchResult, setSearchResult] = useState(playlist)
+
+
+   const setMediaPlayerAndPlay = (index, playlist) => {
+
+      let newIndex
+      newIndex = (index < playlist.length) ? index : playlist.length - 1
+      newIndex = (index >= 0) ? index : playlist.length
+
+      const newsong = playlist[index]
+
+      setMediaState({
+         current: newsong,
+         playing: true,
+         stop: true
       })
-
-   const [searchResult,setSearchResult] =  useState(playlist)
-
-
-   const setMediaPlayerAndPlay = (index,playlist) => {
-
-          let newIndex   
-          newIndex = (index < playlist.length) ?  index : playlist.length - 1  
-          newIndex = (index >= 0) ? index : playlist.length 
-
-          const newsong = playlist[index]
-
-            setMediaState({
-               current: newsong,
-               playing: true,
-               stop: true
-            })
 
    }
 
    const songChangeHandler = (id_song) => {
-      const index = playlist.findIndex((song) => {
-         return song.id === id_song 
-      })
+      const index = playlist.findIndex((song) => { return song.id === id_song })
 
-      setMediaPlayerAndPlay(index,playlist)
+      setMediaPlayerAndPlay(index, playlist)
    }
 
-   const searchSong = (parola_da_cercare) => {
-      //console.log("APP",titolo,playlist);
-
-      const result = playlist.filter((song)=>{
-            // come cerco una parola dentro una stringa in js
-            const criteria = new RegExp('^'+parola_da_cercare,'i'); 
-            return song.title.search(criteria) !== -1;     
-      })
+   const searchSongHandler = (parola_da_cercare) => {
       
-
-      //console.log(risultato)
+      const result = playlist.filter((song) => {
+         const criteria = new RegExp('^' + parola_da_cercare, 'i');
+         return song.title.search(criteria) !== -1;
+      })
       setSearchResult(result)
-      // console.log(risultato)
-
    }
 
-   const onNextPress = () => {
-      const index = playlist.findIndex( song => mediaState.current.id === song.id)
-      //console.log("app::onNextPress",playlist[index+1])
-      setMediaState({
-         current:playlist[index+1],
-         stop: true
-      })
+   const nextPressHandler = () => {
+      const index = playlist.findIndex(song => mediaState.current.id === song.id)
+      setMediaPlayerAndPlay(index + 1, playlist)
    }
 
-   const onPreviusPress = () => {
-      const index = playlist.findIndex( song => mediaState.current.id === song.id)
-      //console.log("app::onNextPress",playlist[index+1])
-      setMediaState({
-         current:playlist[index-1],
-         stop: true
-      })
+   const previusPressHandeler = () => {
+      const index = playlist.findIndex(song => mediaState.current.id === song.id)
+      setMediaPlayerAndPlay(index - 1, playlist)
    }
 
-   const stopHandler = (stop) => {
-      console.log("stop --> onStopCurrent")
+   const stopPressHandler = (stop) => {
       setMediaState({
-         current:mediaState.current,
+         current: mediaState.current,
          stop: stop
-      })    
+      })
    }
-   
+
    const songlist = searchResult.map((song) => {
-                  // console.log("ACTIVE --> ",song.id===mediaState.current.id,song.id,mediaState.current.id)
-                  return  (
-                           <ListGroupItem 
-                              key={song.id}
-                              header={song.title}
-                              content={song.note}
-                              right={song.time}
-                              id={song.id}
-                              active={song.id===mediaState.current.id}
-                              onSongChange = {songChangeHandler}                 
-                           />)
-  })
+      // console.log("ACTIVE --> ",song.id===mediaState.current.id,song.id,mediaState.current.id)
+      return (
+         <ListGroupItem
+            key={song.id}
+            header={song.title}
+            content={song.note}
+            right={song.time}
+            id={song.id}
+            active={song.id === mediaState.current.id}
+            onSongChange={songChangeHandler}
+         />)
+   })
 
-  console.log(mediaState.current.title,mediaState.stop)
+   console.log(mediaState.current.title, mediaState.stop)
 
-  return (<div className="app container"> 
+   return (<div className="app container">
 
-               <MediaPlayer song = {mediaState.current}
-                            stop= {mediaState.stop}
-                            onNextPress = {onNextPress}
-                            onPreviusPress = {onPreviusPress}
-                            stopHandler = {stopHandler}
-               />
+      <MediaPlayer song={mediaState.current}
+         stop={mediaState.stop}
+         onNextPress={nextPressHandler}
+         onPreviusPress={previusPressHandeler}
+         onStopPress={stopPressHandler}
+      />
 
-               <SearchBar onSearch={searchSong} />
-               <ListGroup header="nome playlist"> 
-                  {songlist}  
-               </ListGroup>    
-          </div>);
+      <SearchBar onSearch={searchSongHandler} />
+      <ListGroup header="nome playlist">
+         {songlist}
+      </ListGroup>
+   </div>);
 
 }
 
