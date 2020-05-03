@@ -69,8 +69,7 @@ function App() {
       setMediaState({
          current:mediaState.current,
          stop: stop
-      })
-      
+      })    
    }
    
    const songlist = searchResult.map((song) => {
