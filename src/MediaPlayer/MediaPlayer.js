@@ -14,21 +14,12 @@ class MediaPlayer extends Component {
 
     playHandler = () => {
         console.log("play")
-        this.setState({
-            playing:true
-            
-        })
-        this.props.stopHandler(false)
+        this.props.playHandler()
        
     } 
     
     pauseHandler = () => {
         console.log("pause")
-        this.setState({
-            playing:false
-            
-        })
-       
         this.props.stopHandler(false)
     } 
 
