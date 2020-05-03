@@ -2,55 +2,106 @@
 // apri il file react.js cerca export default  lo mette dentro la variabile React
 import React, { useState } from 'react';
 import playlist from './playlist.json';
+import ListGroup from './ListGroup/ListGroup'
 import ListGroupItem from './ListGroupItem/ListGroupItem';
 import MediaPlayer from './MediaPlayer/MediaPlayer';
+import SearchBar from './SearchBar/SearchBar';
 // import './App.css';
 // Componente App  (functional component)
 function App() {
 
-  
-  const [player,setPlayer] =  useState({
-            currentMedia:playlist[0]
-         })
+   const [mediaState,setMediaState] =  useState({
+         current:playlist[0],
+         stop:true
+      })
 
-  /** EVENT HANDLER */
+   const [searchResult,setSearchResult] =  useState(playlist)
 
-  const songSelected = (id) => {
-         console.log("songSelected",id)
-         const newsong = playlist.find((item)=>{
-                           return item.id === id
-                           })
+   const songChange = (id_song) => {
+      const newCurrent = playlist.find((song) => {
+         return song.id === id_song 
+      })
+     
+      setMediaState({
+         current:newCurrent,
+         stop: true
+      })
 
-         console.log("song",newsong)
-         
-         
-         setPlayer({
-            currentMedia:newsong
-         })
-  }
+      
+   }
 
-  /** RENDER */       
-  const songlist = playlist.map((song) => {
+   const searchSong = (parola_da_cercare) => {
+      //console.log("APP",titolo,playlist);
+
+      const result = playlist.filter((song)=>{
+            // come cerco una parola dentro una stringa in js
+            const criteria = new RegExp('^'+parola_da_cercare,'i'); 
+            return song.title.search(criteria) !== -1;     
+      })
+      
+
+      //console.log(risultato)
+      setSearchResult(result)
+      // console.log(risultato)
+
+   }
+
+   const onNextPress = () => {
+      const index = playlist.findIndex( song => mediaState.current.id === song.id)
+      //console.log("app::onNextPress",playlist[index+1])
+      setMediaState({
+         current:playlist[index+1],
+         stop: true
+      })
+   }
+
+   const onPreviusPress = () => {
+      const index = playlist.findIndex( song => mediaState.current.id === song.id)
+      //console.log("app::onNextPress",playlist[index+1])
+      setMediaState({
+         current:playlist[index-1],
+         stop: true
+      })
+   }
+
+   const stopHandler = (stop) => {
+      console.log("stop --> onStopCurrent")
+      setMediaState({
+         current:mediaState.current,
+         stop: stop
+      })    
+   }
+   
+   const songlist = searchResult.map((song) => {
+                  // console.log("ACTIVE --> ",song.id===mediaState.current.id,song.id,mediaState.current.id)
                   return  (
                            <ListGroupItem 
                               key={song.id}
-                              id={song.id}
                               header={song.title}
                               content={song.note}
                               right={song.time}
-                              listItemSelected={songSelected}
+                              id={song.id}
+                              active={song.id===mediaState.current.id}
+                              change = {songChange}
+                             
                            />)
   })
-  
 
+  console.log(mediaState.current.title,mediaState.stop)
 
   return (<div className="app container"> 
-            <h1>Faccio una modifica</h1>
-            
-            <MediaPlayer 
-               media = {player.currentMedia}
-            />
-             {songlist}
+
+               <MediaPlayer song = {mediaState.current}
+                            stop= {mediaState.stop}
+                            onNextPress = {onNextPress}
+                            onPreviusPress = {onPreviusPress}
+                            stopHandler = {stopHandler}
+               />
+
+               <SearchBar onSearch={searchSong} />
+               <ListGroup header="nome playlist"> 
+                  {songlist}  
+               </ListGroup>    
           </div>);
 
 }

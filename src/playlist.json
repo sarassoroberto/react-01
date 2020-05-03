@@ -2,9 +2,9 @@
     {
         "id":1,
         "title": "Bone Machine",
-        "time": "3:02",
+        "time": "0:08",
         "note": "Lorem ipsum dolor  consectetur nunc vel pellentesque massa tristique.",
-        "poster":"https://upload.wikimedia.org/wikipedia/en/3/34/SurferRosa.jpg?1587013234292"
+        "src" : "http://www.noiseaddicts.com/samples_1w72b820/2514.mp3"
     },
     {
         "id":2,
