@@ -17,17 +17,29 @@ function App() {
 
    const [searchResult,setSearchResult] =  useState(playlist)
 
-   const songChange = (id_song) => {
-      const newCurrent = playlist.find((song) => {
+
+   const setMediaPlayerAndPlay = (index,playlist) => {
+
+          let newIndex   
+          newIndex = (index < playlist.length) ?  index : playlist.length - 1  
+          newIndex = (index >= 0) ? index : playlist.length 
+
+          const newsong = playlist[index]
+
+            setMediaState({
+               current: newsong,
+               playing: true,
+               stop: true
+            })
+
+   }
+
+   const songChangeHandler = (id_song) => {
+      const index = playlist.findIndex((song) => {
          return song.id === id_song 
       })
-     
-      setMediaState({
-         current:newCurrent,
-         stop: true
-      })
 
-      
+      setMediaPlayerAndPlay(index,playlist)
    }
 
    const searchSong = (parola_da_cercare) => {
@@ -82,8 +94,7 @@ function App() {
                               right={song.time}
                               id={song.id}
                               active={song.id===mediaState.current.id}
-                              change = {songChange}
-                             
+                              onSongChange = {songChangeHandler}                 
                            />)
   })
 

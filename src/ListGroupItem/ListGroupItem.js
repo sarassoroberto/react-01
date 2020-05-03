@@ -19,9 +19,7 @@ const ListGroupItem = (props) => {
         }
         impostaStatoDelPannello(nuovoStato)
     }
-
-
-    // true / false   
+  
     const activeClass = props.active  ? 'active' : null
     const width = {padding:"0 1. 5rem"}
     const itemHeight = {height:"1.5rem","align-items":"center"}
@@ -34,7 +32,7 @@ const ListGroupItem = (props) => {
                               : <div style={width}></div>  
                 }
 
-                <div className="header flex-grow-1" onClick={()=> props.change(props.id)}>
+                <div className="header flex-grow-1" onClick={()=> props.onSongChange(props.id)}>
                         {props.header}
                 </div>  
             
